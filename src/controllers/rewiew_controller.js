@@ -15,7 +15,7 @@ class RewiewController {
 					name: filename
 				}
 			}) != 0
-			if (file_exists === false) {
+			if (!file_exists) {
 				console.log(`Файл с именем ${filename} не обнаружен`)
 				res.status(400).json({error: `Файл с именем ${filename} не обнаружен`})
 				return

@@ -6,6 +6,7 @@ const {
 	checkDatabaseExists,
 	checkSequelizeConnection,
 } = require("./database.js");
+const FileService = require('./services/file_service')
 
 const app = express()
 const port = CONFIG.server_port
@@ -22,6 +23,7 @@ app.use('/rewiews', rewiew_router)
 async function startServer() {
 	try {
 		await connectToDatabase()
+		FileService.checkDirectory()
 		app.listen(port, () => console.log(`Сервер запущен на порту: ${port}`))
 	} catch (e) {
 		console.error(`Ошибка при запуске сервера: ${e}`)
