@@ -6,8 +6,10 @@ const path = require('path');
 class FileController {
 	async get(req, res) {
 		try {
+			const limit = req.query.limit;
 			const files = await File.findAll({
-				raw: true
+				raw: true,
+				limit: limit,
 			})
 			res.json({
 				"files": files
