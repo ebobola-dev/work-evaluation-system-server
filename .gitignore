@@ -1,4 +1,6 @@
 /node_modules
-/src/config.js
 package-lock.json
 package.json
+
+/src/config.js
+/src/users_files

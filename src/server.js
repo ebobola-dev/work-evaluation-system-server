@@ -1,4 +1,5 @@
 const express = require('express')
+const file_upload = require('express-fileupload');
 const CONFIG = require('./config')
 const File = require('./models/file.js')
 const Rewiew = require('./models/rewiew')
@@ -7,14 +8,14 @@ const {
 	checkSequelizeConnection,
 } = require("./database.js");
 const FileService = require('./services/file_service')
-
-const app = express()
-const port = CONFIG.server_port
 const file_router = require('./routes/file_router');
 const rewiew_router = require('./routes/rewiew_router');
 
-app.use(express.json())
+const app = express()
+const port = CONFIG.server_port
 
+app.use(express.json())
+app.use(file_upload({}))
 app.use('/files', file_router)
 app.use('/rewiews', rewiew_router)
 

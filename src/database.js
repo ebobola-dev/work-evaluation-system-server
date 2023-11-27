@@ -6,7 +6,7 @@ const {
 
 const sequelize = new Sequilize(
 	CONFIG.database_name,
-	'postgres',
+	CONFIG.database_user,
 	CONFIG.database_password, {
 		host: CONFIG.database_host,
 		dialect: 'postgres',

@@ -5,8 +5,8 @@ class FileService {
 	static files_directory = '../users_files'
 	static dirPath = path.join(__dirname, FileService.files_directory);
 
-	async save(file) {
-
+	async save(filedata) {
+		await filedata.mv(path.join(FileService.dirPath, filedata.name))
 	}
 
 	async checkDirectory() {
@@ -16,6 +16,10 @@ class FileService {
 			return
 		}
 		console.log(`Папка '${FileService.dirPath}' обнаружена`)
+	}
+
+	fileIsExist(filename) {
+		return fs.existsSync(path.join(FileService.dirPath, filename))
 	}
 }
 
